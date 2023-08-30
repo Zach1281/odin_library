@@ -115,7 +115,7 @@ class Library {
 }
 
 let library = new Library();
-let theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', '267', true);
+let theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', '310', true);
 let dune = new Book('Dune', 'Frank Herbert', '617', false);
 let circe = new Book('Circe', 'Madeline Miller', '393', true);
 
