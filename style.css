@@ -52,7 +52,7 @@ body {
     text-align: center;
 }
 
-#has-read-btn, #delete{
+#has-read-btn, .delete{
     border: none;
     border-radius: 1rem;
     padding: 0.3rem;
@@ -107,4 +107,8 @@ form {
 .cancel-confirm-btn button {
     background-color: #b9a4a1;
     color: black;
+}
+
+.delete {
+    background-color: #b9a4a1;
 }
