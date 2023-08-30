@@ -9,9 +9,25 @@
 </head>
 <body>
     <div class="header">
-        <div class="title"><h1>Library</h1></div>
+        <div class="title-div"><h1>Library</h1></div>
     </div>
-    <div class="add-book">
+    <div class="add-book-div">
+        <dialog id="add-book">
+            <form>
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" id="title">
+                    <label for="author">Author:</label>
+                    <input type="text" name="author" id="author">
+                    <label for="length">Num Pages:</label>
+                    <input type="text" name="length" id="length">
+                    <label for="hasRead">Read</label>
+                    <input type="checkbox" name="hasRead" id="hasRead">
+                <div class="cancel-confirm-btn">
+                    <button id="cancel" value="cancel" formmethod="dialog">Cancel</button>
+                    <button id="confirmBtn" value="default">Confirm</button>
+                </div>
+            </form>
+        </dialog>
         <button id="add-book-btn">Add Book</button>
     </div>
     <div class="library"></div>
