@@ -1,5 +1,3 @@
-const display = document.querySelector('.library');
-
 class Book{
     constructor(title, author, length, read)  {
         this.title = title;
@@ -17,6 +15,8 @@ class Library {
 
     addBookToLibrary = (book = "unknown") => {
         this.myLibrary.push(book);
+        console.log(book);
+        this.addBookToDisplay(book);
     }
 
     removeBookFromLibrary = (book = "unknown") => {
@@ -26,46 +26,62 @@ class Library {
             }
         }
     }
-}
 
-let library = new Library();
-let theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', '267', 'read');
-let dune = new Book('Dune', 'Frank Herbert', '617', 'not read');
-
-library.addBookToLibrary(theHobbit);
-library.addBookToLibrary(dune);
-
-console.log(library);
-
-function displayLibrary(){
-    for(let i = 0; i < library.myLibrary.length; i++){
-        const book = document.createElement('div');
-        const bookInfo = document.createElement('div');
+    addBookToDisplay = (book = "unknown") => {
+        const libraryIndex = this.myLibrary.length - 1;
+        const libraryDisplay = document.querySelector('.library');
+        const bookDisplay = document.createElement('div');
+        bookDisplay.classList.add('book-' + libraryIndex);
+        
+        // create relevant elements
         const title = document.createElement('div');
         const author = document.createElement('div');
         const length = document.createElement('div');
-        const hasRead = document.createElement('div');
-        title.classList.add('title');
-        title.textContent = library.myLibrary[i].title;
-        author.classList.add('author');
-        author.textContent = library.myLibrary[i].author;
-        length.classList.add('length');
-        length.textContent = library.myLibrary[i].length;
-        hasRead.classList.add('has-read');
-        hasRead.textContent = library.myLibrary[i].read;
-        book.classList.add('book' + '-' + i);
-        bookInfo.appendChild(title);
-        bookInfo.appendChild(author);
-        bookInfo.appendChild(length);
-        bookInfo.appendChild(hasRead);
-        book.appendChild(bookInfo);
-        display.appendChild(book);
-    }
+        const hasRead = document.createElement('button');
 
+        // add classes and id for css
+        title.classList.add('title');
+        author.classList.add('author');
+        length.classList.add('length');
+        hasRead.id = 'has-read-btn';
+        
+        // different style selector for if read or not
+        if(book.read){
+            hasRead.classList.add('read');
+        }else{
+            hasRead.classList.add('not-read');
+        }
+
+        // add data related to book
+        title.textContent = book.title;
+        author.textContent = book.author;
+        length.textContent = book.length + ' pages';
+
+        // logic for read or not read book
+        if(book.read){
+            hasRead.textContent = 'Read';
+        }else {
+            hasRead.textContent = 'Not Read';
+        }
+
+        // add elements to book
+        bookDisplay.appendChild(title);
+        bookDisplay.appendChild(author);
+        bookDisplay.appendChild(length);
+        bookDisplay.appendChild(hasRead);
+        libraryDisplay.appendChild(bookDisplay);
+    }
 }
 
-displayLibrary();
+let library = new Library();
+let theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', '267', true);
+let dune = new Book('Dune', 'Frank Herbert', '617', false);
+let circe = new Book('Circe', 'Madeline Miller', '393', true);
 
-library.removeBookFromLibrary(dune);
+library.addBookToLibrary(theHobbit);
+library.addBookToLibrary(dune);
+library.addBookToLibrary(circe);
+
+console.log(library)
 
 

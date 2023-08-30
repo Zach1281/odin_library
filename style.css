@@ -51,3 +51,18 @@ body {
     color: #Ec8f00;
     text-align: center;
 }
+
+#has-read-btn {
+    border: none;
+    border-radius: 1rem;
+    padding: 0.3rem;
+    margin-top: 0.5rem;
+}
+
+.read {
+    background-color: green;
+}
+
+.not-read {
+    background-color: red;
+}
